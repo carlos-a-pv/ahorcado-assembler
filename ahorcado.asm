@@ -6,8 +6,8 @@
 ; ----------------------------------------------------
 
 name "el_ahorcado ver. i8086"
+;Brahian
 org 100h
-
 IM:mov dx, offset MSG_OCULTA
    call mostrarmsg
    mov dx, offset MSG_ADIVINE
@@ -16,6 +16,7 @@ IM:mov dx, offset MSG_OCULTA
    call crearoculta
    mov dx, offset ADIVINO
 
+;Carlos
 CM:cmp vidas, 0
    je FMP
    call comparar
@@ -32,7 +33,8 @@ CM:cmp vidas, 0
    cmp cx, 1
    je PM
    jmp CM
-           
+
+;Pablo           
 PM:mov columna, 11
    call setcursor
    call mostrarchar
@@ -63,7 +65,7 @@ FM: ret
 ; VARIABLES // CONSTANTES
 ; ----------------------------------------------------
 
-
+;Brahian
 MAX_LARGO equ 14
 SECRETA db MAX_LARGO+1 dup ('$')
 ADIVINO db MAX_LARGO+1 dup ('$')
@@ -82,6 +84,7 @@ COLUMNA db 0
 ; SUBRUTINAS
 ; ----------------------------------------------------
 
+;Carlos
 ingresar proc near
 II: push cx
     push di
@@ -106,6 +109,7 @@ FI: inc di
     ret
 ingresar endp                  
 
+;PABLOOOOOOO
 crearoculta proc near
 ICR:push di
     push cx    
@@ -125,6 +129,8 @@ FC: inc di
     ret
 crearoculta endp
 
+
+;BRAHIAN
 ingresarletra proc near
 INI:push ax
     mov ah, 07h
@@ -132,7 +138,8 @@ INI:push ax
 INF:mov CHAR, al
     pop ax
 ingresarletra endp
-                     
+
+;CARLOS                     
 comparar proc near
 ICMP:push ax
      push di
@@ -156,7 +163,8 @@ FCMP:pop si
      pop ax
      ret
 comparar endp                              
-                                           
+
+;PABLO                                           
 reemplazar proc near
 IR: push si
     push di
@@ -186,6 +194,7 @@ FR: pop ax
     ret
 reemplazar endp
 
+;BRAHIAN
 buscar proc near
 IB:push di
     push ax    
@@ -204,11 +213,14 @@ FB: pop ax
     ret
 buscar endp
 
+;CARLOS
 quitarvida proc near
 IQV:sub VIDAS, 1
     ret
 quitarvida endp
 
+
+;PABLO
 mostrarmsg proc near
 IMS:push ax
     mov ah, 09h
@@ -216,7 +228,8 @@ IMS:push ax
 FMS:pop ax
     ret
 mostrarmsg endp
-                   
+
+;BRAHIAN                   
 mostrarchar proc near
     push ax
     push dx
@@ -227,7 +240,8 @@ mostrarchar proc near
     pop ax
     ret
 mostrarchar endp                  
-                   
+
+;CARLOS              
 setcursor proc near
     push dx
     push bx
